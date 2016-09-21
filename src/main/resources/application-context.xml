@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:myname="http://www.ruyin.com/schema/user"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.ruyin.com/schema/user http://www.ruyin.com/schema/user.xsd">
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<!-- <bean id="origin" class="org.ruyin.code.spring.MetaReplaced">
+		<qualifier type="org.springframework.beans.factory.annotation.Qualifier" value="qf"></qualifier>
+		<constructor-arg index="0">
+			<map>
+				<entry key="s" value="s"></entry>
+			</map>
+		</constructor-arg>
+		<constructor-arg index="1" value="good"/>
+		<replaced-method name="changeMe" replacer="replacer"></replaced-method>
+	</bean>
+	
+	<myname:user id="testBean" userName="aaa" email="bbb"></myname:user>
+	
+	<bean id="replacer" class="org.ruyin.code.spring.MethodReplacer"></bean>
+	
+	<bean name="lastModified" class="org.ruyin.code.spring.cache.CacheController"></bean> -->
+
+	<bean class="org.ruyin.code.spring.handler.InterceptorOfHanlder"></bean>
+	
+	<aop:aspectj-autoproxy/>
+	
+	<bean id="cooking" class="org.ruyin.code.spring.aop.Cooking"></bean>
+	<bean class="org.ruyin.code.spring.aop.AdviceOfCook"></bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/shopsite"/>
+		<property name="username" value="root"/>
+		<property name="password" value="SE2012-24"/>
+	</bean>
+
+	<bean id="studentService" class="org.ruyin.code.spring.service.StudentServiceImp">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL">
+			<value>tcp://localhost:61616</value>
+		</property>
+	</bean>
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory"/>
+	</bean>
+	<bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0">
+			<value>HelloActiveMQ</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="messageListener" class="org.ruyin.code.spring.MyMsgListener"></bean>
+	
+	<bean id="javaConsumer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory"/>
+		<property name="destination" ref="destination"/>
+		<property name="messageListener" ref="messageListener"/>
+	</bean>
+</beans>
