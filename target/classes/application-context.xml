@@ -6,17 +6,22 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:core="http://activemq.apache.org/schema/core"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core
 		http://www.ruyin.com/schema/user http://www.ruyin.com/schema/user.xsd">
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/"/>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
 	
 	<!-- <bean id="origin" class="org.ruyin.code.spring.MetaReplaced">
 		<qualifier type="org.springframework.beans.factory.annotation.Qualifier" value="qf"></qualifier>
@@ -33,7 +38,7 @@
 	
 	<bean id="replacer" class="org.ruyin.code.spring.MethodReplacer"></bean>
 	
-	<bean name="lastModified" class="org.ruyin.code.spring.cache.CacheController"></bean> -->
+	<bean name="lastModified" class="org.ruyin.code.spring.cache.CacheController"></bean>
 
 	<bean class="org.ruyin.code.spring.handler.InterceptorOfHanlder"></bean>
 	
@@ -78,5 +83,5 @@
 		<property name="connectionFactory" ref="connectionFactory"/>
 		<property name="destination" ref="destination"/>
 		<property name="messageListener" ref="messageListener"/>
-	</bean>
+	</bean> -->
 </beans>

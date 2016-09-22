@@ -14,7 +14,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- <filter>
+	<filter>
 		<filter-name>encoding</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
@@ -25,7 +25,7 @@
 	<filter-mapping>
 		<filter-name>encoding</filter-name>
 		<url-pattern>*.do</url-pattern>
-	</filter-mapping> -->
+	</filter-mapping>
 
 	<servlet>
 		<servlet-name>Springmvc</servlet-name>
@@ -34,6 +34,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Springmvc</servlet-name>
-		<url-pattern>*.htm</url-pattern>
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 </web-app>

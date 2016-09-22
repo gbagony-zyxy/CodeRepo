@@ -1,6 +1,6 @@
 package org.ruyin.code.spring;
 
-import javax.jms.Destination;
+/*import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
@@ -41,3 +41,4 @@ public class MsgSender {
 		System.out.println("Received msg is:"+msg.getText());
 	}
 }
+*/

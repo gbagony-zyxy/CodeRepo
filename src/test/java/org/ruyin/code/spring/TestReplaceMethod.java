@@ -1,7 +1,5 @@
 package org.ruyin.code.spring;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.ruyin.code.spring.aop.Cooking;
 import org.ruyin.code.spring.bean.Student;

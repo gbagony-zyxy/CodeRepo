@@ -1,7 +1,10 @@
 /target/
 
-# project
-.classpath
-.project
-.springBeans
-.settings
+# eclipse
+*.classpath
+*.project
+*.springBeans
+*.settings
+
+# java
+*.class
