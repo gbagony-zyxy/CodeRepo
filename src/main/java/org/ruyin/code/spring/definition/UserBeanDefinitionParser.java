@@ -3,7 +3,6 @@ package org.ruyin.code.spring.definition;
 import org.ruyin.code.spring.bean.User;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
-import org.springframework.core.Ordered;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
