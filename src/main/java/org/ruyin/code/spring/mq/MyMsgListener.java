@@ -1,6 +1,6 @@
-package org.ruyin.code.spring;
+package org.ruyin.code.spring.mq;
 
-/*import javax.jms.JMSException;
+import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
@@ -12,11 +12,10 @@ public class MyMsgListener implements MessageListener{
 		TextMessage message = (TextMessage) msg;
 		
 		try {
-			System.out.println(message.getText());
+			System.out.println("Is this?"+message.getText());
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}
 	}
 
 }
-*/

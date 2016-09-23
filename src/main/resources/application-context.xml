@@ -61,7 +61,7 @@
 
 	<bean id="studentService" class="org.ruyin.code.spring.service.StudentServiceImp">
 		<property name="dataSource" ref="dataSource"></property>
-	</bean>
+	</bean> -->
 	
 	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL">
@@ -77,11 +77,11 @@
 		</constructor-arg>
 	</bean>
 	
-	<bean id="messageListener" class="org.ruyin.code.spring.MyMsgListener"></bean>
+	<bean id="messageListener" class="org.ruyin.code.spring.mq.MyMsgListener"></bean>
 	
 	<bean id="javaConsumer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="connectionFactory"/>
 		<property name="destination" ref="destination"/>
 		<property name="messageListener" ref="messageListener"/>
-	</bean> -->
+	</bean>
 </beans>

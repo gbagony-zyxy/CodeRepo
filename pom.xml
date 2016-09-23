@@ -35,7 +35,7 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- <dependency>
+		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
@@ -49,7 +49,7 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-all</artifactId>
 			<version>${activemq.version}</version>
-		</dependency> -->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -106,7 +106,6 @@
 			<artifactId>aopalliance</artifactId>
 			<version>1.0</version>
 		</dependency> -->
-
 
 	</dependencies>
 
