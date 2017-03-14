@@ -5,6 +5,9 @@
 <title>CodeRepo</title>
 </head>
 <body>
-	Hello World!
+	<form action="convert.do" method="post">
+		<input type="text"/><br/>
+		<input type="submit" value="Submit"/>
+	</form>
 </body>
 </html>

@@ -8,3 +8,6 @@
 
 # java
 *.class
+
+.idea
+CodeRepo.iml

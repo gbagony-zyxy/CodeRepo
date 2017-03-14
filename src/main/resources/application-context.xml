@@ -17,11 +17,22 @@
 		http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core
 		http://www.ruyin.com/schema/user http://www.ruyin.com/schema/user.xsd">
 	
+	<context:component-scan base-package="org.ruyin.code.spring.converter"/>
+	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/"/>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
+	<mvc:annotation-driven conversion-service="conversionService"/>
+	
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<ref bean="companyConverter"/>
+			</set>
+		</property>
+	</bean>
 	
 	<!-- <bean id="origin" class="org.ruyin.code.spring.MetaReplaced">
 		<qualifier type="org.springframework.beans.factory.annotation.Qualifier" value="qf"></qualifier>
@@ -63,7 +74,7 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean> -->
 	
-	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+	<!-- <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL">
 			<value>tcp://localhost:61616</value>
 		</property>
@@ -83,5 +94,7 @@
 		<property name="connectionFactory" ref="connectionFactory"/>
 		<property name="destination" ref="destination"/>
 		<property name="messageListener" ref="messageListener"/>
-	</bean>
+	</bean> -->
+	
+	<!-- <import resource="redis-context.xml"/> -->
 </beans>
