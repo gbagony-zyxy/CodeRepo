@@ -15,9 +15,8 @@ public class BookSaleProxy implements InvocationHandler{
 	
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		Object result = null;
 		System.out.println("begin...");
-		result = method.invoke(obj, args);
+		Object result = method.invoke(obj, args);
 		System.out.println("end...");
 		return result;
 	}

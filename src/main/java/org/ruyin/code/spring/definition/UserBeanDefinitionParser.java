@@ -6,6 +6,9 @@ import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
+/**
+ * 自定义bean的命名空间
+ * */
 public class UserBeanDefinitionParser extends AbstractSingleBeanDefinitionParser{
 
 	@Override

@@ -18,7 +18,6 @@ public class TestReplaceMethod {
 
 	@Test
 	public void testReplace(){
-		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		MetaReplaced replaced = (MetaReplaced) context.getBean("origin");
 		replaced.changeMe();
@@ -26,13 +25,11 @@ public class TestReplaceMethod {
 	
 	@Test
 	public void testUser(){
-		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		User user = (User) context.getBean("testBean");
 		System.out.println(user.getUsername()+";"+user.getEmail());
 	}
 	
-	@SuppressWarnings("resource")
 	@Test
 	public void testAop(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
@@ -54,15 +51,11 @@ public class TestReplaceMethod {
 		facade.printBook();
 	}
 	
-	@SuppressWarnings("resource")
 	@Test
 	public void testDb() throws Exception{
 		ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
 		StudentService service = (StudentService) context.getBean("studentService");
-		Student student = new Student();
-		student.setUsername("ruyin");
-		student.setAge(23);
-		student.setEmail("vaq@126.com");
+		Student student = new Student(2,"ruyin",23,"vaq@126.com");
 		
 		service.save(student);
 		

@@ -1,14 +1,13 @@
 package org.ruyin.code.spring.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.ruyin.code.spring.bean.User;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserController extends AbstractController{
 
@@ -16,12 +15,8 @@ public class UserController extends AbstractController{
 	protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		List<User> userList = new ArrayList<>();
-		User userA = new User();
-		User userB = new User();
-		userA.setEmail("gbagony@126.com");
-		userB.setEmail("ruyinvaq@gmail.com");
-		userA.setUsername("gbagony");
-		userB.setUsername("ruyin");
+		User userA = new User("gbagony","gbagony@126.com");
+		User userB = new User("ruyin","ruyinvaq@gmail.com");
 		userList.add(userA);
 		userList.add(userB);
 		//第一个参数表示视图组件的逻辑名称,视图解析器会使用该名称查找实际的View对象(到实际页面)

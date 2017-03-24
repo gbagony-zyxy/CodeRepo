@@ -73,7 +73,7 @@
 		<!--此处定义的拦截器拦截所有的路径请求-->
 		<bean class="org.ruyin.code.spring.handler.InterceptorOfHanlder"/>
 		<mvc:interceptor>
-			<mvc:mapping path="/jackson/object"/>
+			<mvc:mapping path="/jackson/{userId}/getInfo"/>
 			<!--此处定义的bean拦截指定路径的请求-->
 			<bean class="org.ruyin.code.spring.handler.WebRequestInterceptor"/>
 		</mvc:interceptor>

@@ -14,7 +14,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations={"classpath:application-context.xml"})
 public class RedisTest {
 
-	@SuppressWarnings("unused")
 	@Autowired
 	private MemberService memberService;
 	
