@@ -17,11 +17,16 @@
 		http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core
 		http://www.ruyin.com/schema/user http://www.ruyin.com/schema/user.xsd">
 	
-	<context:component-scan base-package="org.ruyin.code.spring.converter"/>
-	
+	<context:component-scan base-package="org.ruyin.code.spring"/>
+
+	<!--静态资源处理-->
+	<!--前面定义的会覆盖后面定义的配置-->
+	<!--<mvc:annotation-driven/>-->
+	<mvc:resources mapping="/*.html" location="/"/>
+
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/"/>
-		<property name="suffix" value=".jsp"></property>
+		<property name="suffix" value=".jsp"/>
 	</bean>
 	
 	<mvc:annotation-driven conversion-service="conversionService"/>
@@ -33,7 +38,47 @@
 			</set>
 		</property>
 	</bean>
-	
+
+	<!--通过处理器映射DefaultAnnotationHandlerMapping来开启支持@Controller注解-->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+	<!--通过处理器适配器AnnotationMethodHandlerAdapter来开启支持@RequestMapping注解-->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<!--设置返回字符串编码-->
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/html;charset=UTF-8</value>
+							<value>application/json;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+				<!--json转换器-->
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/html;charset=UTF-8</value>
+							<value>application/json;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<!--拦截器配置-->
+	<mvc:interceptors>
+		<!--此处定义的拦截器拦截所有的路径请求-->
+		<bean class="org.ruyin.code.spring.handler.InterceptorOfHanlder"/>
+		<mvc:interceptor>
+			<mvc:mapping path="/jackson/object"/>
+			<!--此处定义的bean拦截指定路径的请求-->
+			<bean class="org.ruyin.code.spring.handler.WebRequestInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 	<!-- <bean id="origin" class="org.ruyin.code.spring.MetaReplaced">
 		<qualifier type="org.springframework.beans.factory.annotation.Qualifier" value="qf"></qualifier>
 		<constructor-arg index="0">

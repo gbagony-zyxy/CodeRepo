@@ -5,7 +5,7 @@
 	<groupId>org.ruyin.code.spring</groupId>
 	<artifactId>CodeRepo</artifactId>
 	<version>1.0.0-RELEASE</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>CodeRepo</name>
 	<url>http://maven.apache.org</url>
@@ -22,7 +22,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -81,25 +80,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>1.5.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.5.8</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.5.8</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
+			<version>1.7.25</version>
 		</dependency>
 
 		<dependency>
@@ -135,29 +120,26 @@
 		</dependency>
 
 		<dependency>
-			<groupId>dom4j</groupId>
-			<artifactId>dom4j</artifactId>
-			<version>1.6.1</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.8.6</version>
 		</dependency>
-
-
-		<!-- <dependency> <groupId>org.aspectj</groupId> <artifactId>aspectjweaver</artifactId> 
-			<version>1.8.9</version> </dependency> -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.8.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.8.6</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>1.8.9</version>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-		</dependency>
-		<!-- <dependency> <groupId>org.aspectj</groupId> <artifactId>aspectjtools</artifactId> 
-			<version>1.8.9</version> </dependency> <dependency> <groupId>aopalliance</groupId> 
-			<artifactId>aopalliance</artifactId> <version>1.0</version> </dependency> -->
-
 	</dependencies>
 
 	<build>
@@ -180,8 +162,12 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.1</version>
-				<configuration></configuration>
+				<version>2.2</version>
+				<configuration>
+					<path>/${project.artifactId}</path>
+					<port>9090</port>
+					<uriEncoding>UTF-8</uriEncoding>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
